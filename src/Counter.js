@@ -1,5 +1,6 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ADD_ONE, MINUS_ONE } from './action';
 
 const containerStyle = {
     display: 'flex'
@@ -12,27 +13,21 @@ const buttonStyle = {
 }
 
 const Counter = () => {
-    const [count, setCount] = useState(0)
+    // const state = useSelector((state) => state);
+    // console.log(state)
+    const number = useSelector((state) => state.number);
+    const dispatch = useDispatch();
 
-    const handleAddOne = () => {
-        return (
-            setCount(count + 1)
-        )
-    }
+    const subOneBtnClick = () => dispatch({ type: MINUS_ONE });
+    const onAddOneBtnClick = () => dispatch({ type: ADD_ONE });
 
-    const handleSubOne = () => {
-        return (
-            setCount(count - 1)
-        )
-    }
-    
     return (
         <div className="App" >
             <header className="App-header">
-                <h1>{count}</h1>
+                <h1>{number}</h1>
                 <div style={containerStyle}>
-                    <button type="button" style={buttonStyle} onClick={handleSubOne}>-</button>
-                    <button type="button" style={buttonStyle} onClick={handleAddOne}>+</button>
+                    <button type="button" style={buttonStyle} onClick={subOneBtnClick}>-</button>
+                    <button type="button" style={buttonStyle} onClick={onAddOneBtnClick}>+</button>
                 </div>
             </header>
         </div>
