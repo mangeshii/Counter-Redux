@@ -13,8 +13,6 @@ const buttonStyle = {
 }
 
 const Counter = () => {
-    // const state = useSelector((state) => state);
-    // console.log(state)
     const number = useSelector((state) => state.number);
     const dispatch = useDispatch();
 
